@@ -3,7 +3,7 @@
 
 int main()
 {
-	std::cout << "Hello World" << std::endl;
+	std::cout << "Salut Exia !" << std::endl;
 	_getch();
 	return 0;
 }
