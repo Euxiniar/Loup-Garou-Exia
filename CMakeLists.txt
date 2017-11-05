@@ -12,9 +12,10 @@ project(${NAME})
 
 
 # Debug flags
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -W4")
 if(CMAKE_COMPILER_IS_GNUCXX)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wextra -Wundef")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 # Add all files from the source/ folder to CMake
@@ -30,10 +31,24 @@ file(GLOB_RECURSE SRC_BEGIN
     "src/begin/*.hpp"
 )
 
+file(GLOB_RECURSE SRC_INOUT
+    "src/inOut/*.cpp"
+    "src/inOut/*.h"
+    "src/inOut/*.hpp"
+)
+
+file(GLOB_RECURSE SRC_ROLESDISTRIBUTION
+    "src/rolesDistribution/*.cpp"
+    "src/rolesDistribution/*.h"
+    "src/rolesDistribution/*.hpp"
+)
+
 # Define the executable
-add_executable(${PROJECT_NAME} ${SRC} ${SRC_BEGIN})
+add_executable(${PROJECT_NAME} ${SRC} ${SRC_BEGIN} ${SRC_INOUT} ${SRC_ROLESDISTRIBUTION})
 
 source_group("Begin" FILES ${SRC_BEGIN})
+source_group("InOut" FILES ${SRC_INOUT})
+source_group("RolesDistribution" FILES ${SRC_ROLESDISTRIBUTION})
 
 # Enable C++ 14
 if (NOT UNIX)
