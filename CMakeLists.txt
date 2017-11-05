@@ -50,7 +50,7 @@ file(GLOB_RECURSE SRC_PLAYER
 )
 
 # Define the executable
-add_executable(${PROJECT_NAME} ${SRC} ${SRC_BEGIN} ${SRC_INOUT} ${SRC_ROLESDISTRIBUTION} ${SRC_PLAYER})
+add_executable(${PROJECT_NAME} ${SRC})
 
 source_group("Begin" FILES ${SRC_BEGIN})
 source_group("InOut" FILES ${SRC_INOUT})
