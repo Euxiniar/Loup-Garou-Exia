@@ -1,6 +1,9 @@
 #pragma once
 #include "../inOut/Narrator.h"
+#include "../players/Player.h"
+
 #include <memory>
+#include <list>
 
 class RolesDistrib
 {
@@ -11,4 +14,5 @@ public:
 private:
 	int m_nbPlayers;
 	std::unique_ptr<Narrator> m_nar;
+	std::list<Player> m_players;
 };

@@ -7,5 +7,5 @@ RolesDistrib::RolesDistrib(Narrator &nar)
 
 void RolesDistrib::distribChoice()
 {
-	m_nbPlayers = m_nar->askNbPlayers();
+	m_nar->enterPlayer(m_players);
 }

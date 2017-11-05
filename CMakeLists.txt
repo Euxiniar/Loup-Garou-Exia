@@ -43,12 +43,19 @@ file(GLOB_RECURSE SRC_ROLESDISTRIBUTION
     "src/rolesDistribution/*.hpp"
 )
 
+file(GLOB_RECURSE SRC_PLAYER
+    "src/player/*.cpp"
+    "src/player/*.h"
+    "src/player/*.hpp"
+)
+
 # Define the executable
-add_executable(${PROJECT_NAME} ${SRC} ${SRC_BEGIN} ${SRC_INOUT} ${SRC_ROLESDISTRIBUTION})
+add_executable(${PROJECT_NAME} ${SRC} ${SRC_BEGIN} ${SRC_INOUT} ${SRC_ROLESDISTRIBUTION} ${SRC_PLAYER})
 
 source_group("Begin" FILES ${SRC_BEGIN})
 source_group("InOut" FILES ${SRC_INOUT})
 source_group("RolesDistribution" FILES ${SRC_ROLESDISTRIBUTION})
+source_group("Player" FILES ${SRC_PLAYER})
 
 # Enable C++ 14
 if (NOT UNIX)

@@ -11,13 +11,15 @@ void Narrator::present()
 	std::cout << "Bienvenue sur le jeu du Loup-Garou" << std::endl;
 }
 
-int Narrator::askNbPlayers()
+void Narrator::enterPlayer(std::list<Player>& players)
 {
-	int nbPlayers;
-	std::cout << "Combiens de joueurs etes vous ?" << std::endl;
-	std::cin >> nbPlayers;
-	return nbPlayers;
-}
-void Narrator::askName()
-{
+	std::string name;
+	std::locale locale;
+	
+	while ((name.length() != 1 || std::toupper(name[0], locale) != 'V') &&
+		(name.length() != 1 || std::toupper(name[0], locale) != 'Q'))
+	{
+		std::cin >> name;
+		players.emplace_back(name);
+	}
 }

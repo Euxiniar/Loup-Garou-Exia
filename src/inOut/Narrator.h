@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <list>
+#include <locale>
+#include "../players/Player.h"
 
 class Narrator
 {
@@ -8,6 +11,5 @@ public:
 
 	/**************Pour la console*************/
 	void present();
-	int askNbPlayers();
-	void askName();
+	void enterPlayer(std::list<Player> &players);
 };
