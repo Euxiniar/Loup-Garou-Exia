@@ -2,7 +2,7 @@
 #include <iostream>
 #include <list>
 #include <locale>
-#include "../players/Player.h"
+#include "../player/Player.h"
 
 class Narrator
 {

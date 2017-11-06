@@ -1,6 +1,6 @@
 #pragma once
 #include "../inOut/Narrator.h"
-#include "../players/Player.h"
+#include "../player/Player.h"
 
 #include <memory>
 #include <list>
