@@ -39,3 +39,7 @@ uint16_t Narrator::selectTypeOfRolesDistrib()
 	std::cin >> choice;
 	return choice;
 }
+
+void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles)
+{
+}

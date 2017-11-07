@@ -7,6 +7,8 @@
 #include <list>
 #include <vector>
 
+#define WEREWOLF_PERCENT 0.35
+
 class RolesDistrib
 {
 public:
@@ -18,6 +20,7 @@ private:
 	std::unique_ptr<Narrator> m_nar;
 	std::list<Player> m_players;
 	std::vector<std::vector<Player>> m_roles;
-	std::vector<uint16_t> autoDefineRolesNb(const size_t &nbPlayers);
+
+	void autoDefineRolesNb(const size_t &nbPlayers, std::vector<uint16_t> &nbPlayersPerRoles);
 	void defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles);
 };

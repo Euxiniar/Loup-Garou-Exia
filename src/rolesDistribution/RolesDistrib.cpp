@@ -18,22 +18,22 @@ void RolesDistrib::distribRoles()
 	switch (choice)
 	{
 	case 1:
-		nbPlayersPerRoles = autoDefineRolesNb(m_players.size());
-		defineRoles(nbPlayersPerRoles);
+		autoDefineRolesNb(m_players.size(), nbPlayersPerRoles);
 		break;
 	case 2:
+		m_nar->defineRolesNb(m_players.size(), nbPlayersPerRoles);
 		break;
 	default:
 		break;
 	}
+	defineRoles(nbPlayersPerRoles);
 }
 
-std::vector<uint16_t> RolesDistrib::autoDefineRolesNb(const size_t & nbPlayers)
+void RolesDistrib::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint16_t> &nbPlayersPerRoles)
 {
-	std::vector<uint16_t> nbPlayersPerRoles;
-	nbPlayersPerRoles.push_back((uint16_t)(nbPlayers*0.35));
-	nbPlayersPerRoles.push_back((uint16_t)nbPlayers-(uint16_t)(nbPlayers*0.35));
-	return nbPlayersPerRoles;
+	
+	nbPlayersPerRoles.push_back((uint16_t)(nbPlayers*WEREWOLF_PERCENT));
+	nbPlayersPerRoles.push_back((uint16_t)nbPlayers-(uint16_t)(nbPlayers*WEREWOLF_PERCENT));
 }
 
 void RolesDistrib::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
