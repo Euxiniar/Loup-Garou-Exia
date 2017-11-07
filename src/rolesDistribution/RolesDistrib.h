@@ -1,7 +1,6 @@
 #pragma once
 #include "../inOut/Narrator.h"
 #include "../player/Player.h"
-#include "RolesDefinition.h"
 
 #include <memory>
 #include <random>
