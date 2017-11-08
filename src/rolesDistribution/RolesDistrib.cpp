@@ -3,6 +3,9 @@
 RolesDistrib::RolesDistrib(Narrator &nar)
 {
 	m_nar = std::make_unique<Narrator>(nar);
+	m_rolesName.push_back("Loups-Garous");
+	m_rolesName.push_back("Villageois");
+	/***As to change if there's more roles***/
 }
 
 void RolesDistrib::distribChoice()
@@ -21,7 +24,7 @@ void RolesDistrib::distribRoles()
 		autoDefineRolesNb(m_players.size(), nbPlayersPerRoles);
 		break;
 	case 2:
-		m_nar->defineRolesNb(m_players.size(), nbPlayersPerRoles);
+		m_nar->defineRolesNb(m_players.size(), nbPlayersPerRoles, m_rolesName);
 		break;
 	default:
 		break;

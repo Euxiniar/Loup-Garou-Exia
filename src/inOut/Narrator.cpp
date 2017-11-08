@@ -40,25 +40,21 @@ uint16_t Narrator::selectTypeOfRolesDistrib()
 	return choice;
 }
 
-void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles)
+void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, const std::vector<std::string>& rolesName)
 {
 	uint16_t werewolf_choice{ 0 };
 
 	std::cout << "Choisissez le nombre de Loups-Garous : " << std::endl;
 	std::cin >> werewolf_choice;
-	showNbPlayersPerRoles(nbPlayersPerRoles);
 
 	nbPlayersPerRoles.push_back((uint16_t)(werewolf_choice));
 	nbPlayersPerRoles.push_back((uint16_t)nbPlayers - werewolf_choice);
-	showNbPlayersPerRoles(nbPlayersPerRoles);
+	showNbPlayersPerRoles(nbPlayersPerRoles, rolesName);
 }
 
-void Narrator::showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles)
+void Narrator::showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, const std::vector<std::string>& rolesName)
 {
-	std::vector<std::string> rolesName;
-	rolesName.push_back("Loups-Garous");
-	rolesName.push_back("Villageois");
-	/***As to change if there's more roles***/
+	
 
 	for (size_t i = 0; i < nbPlayersPerRoles.size(); i++)
 	{
