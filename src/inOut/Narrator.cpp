@@ -42,20 +42,29 @@ uint16_t Narrator::selectTypeOfRolesDistrib()
 
 void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, const std::vector<std::string>& rolesName)
 {
-	uint16_t werewolf_choice{ 0 };
-
-	std::cout << "Choisissez le nombre de Loups-Garous : " << std::endl;
-	std::cin >> werewolf_choice;
-
-	nbPlayersPerRoles.push_back((uint16_t)(werewolf_choice));
-	nbPlayersPerRoles.push_back((uint16_t)nbPlayers - werewolf_choice);
+	uint16_t choice{ 0 };
+	uint16_t nbPlayersRoles{ 0 };
+	for (size_t i = 0; i < rolesName.size(); i++)
+	{
+		std::cout << "Choisissez le nombre de " << rolesName.at(i) << std::endl;
+		std::cin >> choice;
+		nbPlayersRoles += choice;
+		if (nbPlayersRoles > nbPlayers)
+		{
+			std::cout << "Vous avez depasse la taille maximale de joueurs !" << std::endl;
+			nbPlayersRoles -= choice;
+			i--;
+		}
+		else
+		{
+			nbPlayersPerRoles.push_back(choice);
+		}
+	}
 	showNbPlayersPerRoles(nbPlayersPerRoles, rolesName);
 }
 
 void Narrator::showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, const std::vector<std::string>& rolesName)
 {
-	
-
 	for (size_t i = 0; i < nbPlayersPerRoles.size(); i++)
 	{
 		std::cout << rolesName.at(i) << " ( " << nbPlayersPerRoles.at(i) << " )" << std::endl;
