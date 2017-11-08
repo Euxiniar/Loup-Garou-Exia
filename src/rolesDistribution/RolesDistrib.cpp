@@ -5,7 +5,9 @@ RolesDistrib::RolesDistrib(Narrator &nar)
 	m_nar = std::make_unique<Narrator>(nar);
 	m_rolesName.push_back("Loups-Garous");
 	m_rolesName.push_back("Villageois");
+	m_rolesName.push_back("Sorciere");
 	/***As to change if there's more roles***/
+	//TODO créer une classe Role//
 }
 
 void RolesDistrib::distribChoice()
@@ -37,6 +39,7 @@ void RolesDistrib::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint1
 	
 	nbPlayersPerRoles.push_back((uint16_t)(nbPlayers*WEREWOLF_PERCENT));
 	nbPlayersPerRoles.push_back((uint16_t)nbPlayers-(uint16_t)(nbPlayers*WEREWOLF_PERCENT));
+	m_nar->showNbPlayersPerRoles(nbPlayersPerRoles, m_rolesName);
 }
 
 void RolesDistrib::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
@@ -49,6 +52,7 @@ void RolesDistrib::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
 	{
 		for (int x = 0; x < nbPlayersPerRoles.at(y); x++)
 		{
+			shuffledPlayers.back().setRoleName(m_rolesName.at(y));
 			selectedRole.push_back(shuffledPlayers.back());
 			shuffledPlayers.pop_back();
 		}
