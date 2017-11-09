@@ -10,6 +10,7 @@ class Player
 {
 public:
 	Player(std::string name);
+	Player();
 	void setRole(Role roleName);
 private:
 	bool state; //state 1 == alive and 

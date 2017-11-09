@@ -1,18 +1,19 @@
 #include "Distribution.h"
 
-Distribution::Distribution(Narrator &nar)
+Distribution::Distribution(Narrator &nar, std::list<Player> &players, std::vector<std::list<Player>> &rolesArray)
 {
 	m_nar = std::make_unique<Narrator>(nar);
+	m_players = std::make_unique<std::list<Player>*>(&players);
+	m_rolesArray = std::make_unique<std::vector<std::list<Player>>*>(&rolesArray);
 	m_roles.emplace_back("Loup-Garou", WEREWOLF_PERCENT);
 	m_roles.emplace_back("Villageois");
 	m_roles.emplace_back("Sorciere");
 	/***As to change if there's more roles***/
-
 }
 
 void Distribution::distribPlayers()
 {
-	m_nar->enterPlayer(m_players);
+	m_nar->enterPlayer(**m_players);
 }
 
 void Distribution::distribRoles()
@@ -22,10 +23,10 @@ void Distribution::distribRoles()
 	switch (choice)
 	{
 	case 1:
-		autoDefineRolesNb(m_players.size(), nbPlayersPerRoles);
+		autoDefineRolesNb((*m_players)->size(), nbPlayersPerRoles);
 		break;
 	case 2:
-		m_nar->defineRolesNb(m_players.size(), nbPlayersPerRoles, m_roles);
+		m_nar->defineRolesNb((*m_players)->size(), nbPlayersPerRoles, m_roles);
 		break;
 	default:
 		break;
@@ -43,10 +44,10 @@ void Distribution::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint1
 
 void Distribution::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
 {
-	std::vector<Player> shuffledPlayers(m_players.begin(), m_players.end());
+	std::vector<Player> shuffledPlayers((*m_players)->begin(),(*m_players)->end());
 	std::random_shuffle(shuffledPlayers.begin(), shuffledPlayers.end());
 
-	std::vector<Player> selectedRole;
+	std::list<Player> selectedRole;
 	for (int y = 0; y < nbPlayersPerRoles.size(); y++)
 	{
 		for (int x = 0; x < nbPlayersPerRoles.at(y); x++)
@@ -55,7 +56,7 @@ void Distribution::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
 			selectedRole.push_back(shuffledPlayers.back());
 			shuffledPlayers.pop_back();
 		}
-		m_rolesArrays.push_back(selectedRole);
+		(*m_rolesArray)->push_back(selectedRole);
 		selectedRole.clear();
 	}
 }

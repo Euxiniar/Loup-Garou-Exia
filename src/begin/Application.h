@@ -12,9 +12,12 @@ public:
 
 private:
 	void init();
-
+	std::vector<std::list<Player>> m_rolesArray;
+	std::list<Player> m_playersTab;
 	Distribution m_distribution;
 	Narrator m_nar;
+	
+
 	//Game_State state;
 	//Vote vote;
 };

@@ -1,7 +1,7 @@
 #include "Application.h"
 
 Application::Application()
-	: m_distribution(m_nar)
+	: m_distribution(m_nar, m_playersTab, m_rolesArray)
 {
 	init();
 }
