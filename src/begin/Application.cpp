@@ -9,7 +9,7 @@ Application::Application()
 void Application::runMainGameLoop()
 {
 	m_nar.present();
-	m_rolesDistrib.distribChoice();
+	m_rolesDistrib.distribPlayers();
 	m_rolesDistrib.distribRoles();
 }
 

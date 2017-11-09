@@ -13,7 +13,7 @@ class RolesDistrib
 {
 public:
 	RolesDistrib(Narrator &nar);
-	void distribChoice();
+	void distribPlayers();
 	void distribRoles();
 
 private:

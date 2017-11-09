@@ -10,10 +10,9 @@ RolesDistrib::RolesDistrib(Narrator &nar)
 
 }
 
-void RolesDistrib::distribChoice()
+void RolesDistrib::distribPlayers()
 {
 	m_nar->enterPlayer(m_players);
-	
 }
 
 void RolesDistrib::distribRoles()
