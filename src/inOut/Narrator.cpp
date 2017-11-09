@@ -44,20 +44,44 @@ void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nb
 {
 	uint16_t choice{ 0 };
 	uint16_t nbPlayersRoles{ 0 };
-	for (size_t i = 0; i < roles.size(); i++)
+	bool everyPlayerCouldHaveRole = false;
+
+	while (!everyPlayerCouldHaveRole)
 	{
-		std::cout << "Choisissez le nombre de " << roles.at(i).getName() << std::endl;
-		std::cin >> choice;
-		nbPlayersRoles += choice;
-		if (nbPlayersRoles > nbPlayers)
+		for (size_t i = 0; i < roles.size(); i++)
 		{
-			std::cout << "Vous avez depasse la taille maximale de joueurs !" << std::endl;
-			nbPlayersRoles -= choice;
-			i--;
+			std::cout << "Il reste " << nbPlayers - nbPlayersRoles << " Joueurs" << std::endl;
+			if (nbPlayersRoles != nbPlayers)
+			{
+				std::cout << "Choisissez le nombre de " << roles.at(i).getName() << std::endl;
+				std::cin >> choice;
+			}
+			if (nbPlayersRoles + choice > nbPlayers)
+			{
+				std::cout << "Vous avez depasse la taille maximale de joueurs !" << std::endl;
+				i--;
+			}
+			else if (choice == nbPlayers)
+			{
+				std::cout << "Il ne peut pas y avoir autant de joueur dans la meme equipe !" << std::endl;
+				i--;
+			}
+			else
+			{
+				nbPlayersRoles += choice;
+				nbPlayersPerRoles.push_back(choice);
+			}
+			choice = 0;
+		}
+		if (nbPlayersRoles != nbPlayers)
+		{
+			std::cout << "Vous n'avez pas defini assez de roles pour tout le monde !" << std::endl;
+			nbPlayersRoles = 0;
+			nbPlayersPerRoles.clear();
 		}
 		else
 		{
-			nbPlayersPerRoles.push_back(choice);
+			everyPlayerCouldHaveRole = !everyPlayerCouldHaveRole;
 		}
 	}
 	showNbPlayersPerRoles(nbPlayersPerRoles, roles);
