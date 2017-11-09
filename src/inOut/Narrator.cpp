@@ -40,13 +40,13 @@ uint16_t Narrator::selectTypeOfRolesDistrib()
 	return choice;
 }
 
-void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, const std::vector<std::string>& rolesName)
+void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, std::vector<Role>& roles)
 {
 	uint16_t choice{ 0 };
 	uint16_t nbPlayersRoles{ 0 };
-	for (size_t i = 0; i < rolesName.size(); i++)
+	for (size_t i = 0; i < roles.size(); i++)
 	{
-		std::cout << "Choisissez le nombre de " << rolesName.at(i) << std::endl;
+		std::cout << "Choisissez le nombre de " << roles.at(i).getName() << std::endl;
 		std::cin >> choice;
 		nbPlayersRoles += choice;
 		if (nbPlayersRoles > nbPlayers)
@@ -60,13 +60,13 @@ void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nb
 			nbPlayersPerRoles.push_back(choice);
 		}
 	}
-	showNbPlayersPerRoles(nbPlayersPerRoles, rolesName);
+	showNbPlayersPerRoles(nbPlayersPerRoles, roles);
 }
 
-void Narrator::showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, const std::vector<std::string>& rolesName)
+void Narrator::showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, std::vector<Role>& roles)
 {
 	for (size_t i = 0; i < nbPlayersPerRoles.size(); i++)
 	{
-		std::cout << rolesName.at(i) << " ( " << nbPlayersPerRoles.at(i) << " )" << std::endl;
+		std::cout << roles.at(i).getName() << " ( " << nbPlayersPerRoles.at(i) << " )" << std::endl;
 	}
 }

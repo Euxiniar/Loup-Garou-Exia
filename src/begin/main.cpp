@@ -1,6 +1,4 @@
-#include <iostream>
 #include <conio.h>
-#include <memory>
 #include "Application.h"
 
 int main(int, char**)

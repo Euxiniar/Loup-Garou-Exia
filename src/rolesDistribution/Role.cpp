@@ -13,3 +13,8 @@ void Role::setName(std::string name)
 {
 	m_name = name;
 }
+
+const std::string Role::getName()
+{
+	return m_name;
+}

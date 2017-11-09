@@ -7,6 +7,7 @@ public:
 	Role(std::string name);
 	Role();
 	void setName(std::string name);
+	const std::string getName();
 
 private:
 	std::string m_name;
