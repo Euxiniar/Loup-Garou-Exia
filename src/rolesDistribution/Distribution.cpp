@@ -1,21 +1,21 @@
-#include "RolesDistrib.h"
+#include "Distribution.h"
 
-RolesDistrib::RolesDistrib(Narrator &nar)
+Distribution::Distribution(Narrator &nar)
 {
 	m_nar = std::make_unique<Narrator>(nar);
-	m_roles.emplace_back("Loup-Garou");
+	m_roles.emplace_back("Loup-Garou", WEREWOLF_PERCENT);
 	m_roles.emplace_back("Villageois");
-
+	m_roles.emplace_back("Sorciere");
 	/***As to change if there's more roles***/
 
 }
 
-void RolesDistrib::distribPlayers()
+void Distribution::distribPlayers()
 {
 	m_nar->enterPlayer(m_players);
 }
 
-void RolesDistrib::distribRoles()
+void Distribution::distribRoles()
 {
 	uint16_t choice = m_nar->selectTypeOfRolesDistrib();
 	std::vector<uint16_t> nbPlayersPerRoles;
@@ -33,15 +33,15 @@ void RolesDistrib::distribRoles()
 	defineRoles(nbPlayersPerRoles);
 }
 
-void RolesDistrib::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint16_t> &nbPlayersPerRoles)
+void Distribution::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint16_t> &nbPlayersPerRoles)
 {
 	
-	nbPlayersPerRoles.push_back((uint16_t)(nbPlayers*WEREWOLF_PERCENT));
-	nbPlayersPerRoles.push_back((uint16_t)nbPlayers-(uint16_t)(nbPlayers*WEREWOLF_PERCENT));
+	nbPlayersPerRoles.push_back((uint16_t)(nbPlayers*m_roles.at(0).getCompositionPorcent()));
+	nbPlayersPerRoles.push_back((uint16_t)nbPlayers-(uint16_t)(nbPlayers*m_roles.at(0).getCompositionPorcent()));
 	m_nar->showNbPlayersPerRoles(nbPlayersPerRoles, m_roles);
 }
 
-void RolesDistrib::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
+void Distribution::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
 {
 	std::vector<Player> shuffledPlayers(m_players.begin(), m_players.end());
 	std::random_shuffle(shuffledPlayers.begin(), shuffledPlayers.end());

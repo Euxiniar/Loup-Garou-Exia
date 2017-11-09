@@ -10,7 +10,7 @@ class Narrator
 public:
 	Narrator();
 
-	/**************Pour la console*************/
+	/**************For the console*************/
 	void present();
 	void enterPlayer(std::list<Player> &players);
 	uint16_t selectTypeOfRolesDistrib();

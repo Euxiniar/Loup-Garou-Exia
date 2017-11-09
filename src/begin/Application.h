@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "../inOut/Narrator.h"
-#include "../rolesDistribution/RolesDistrib.h"
+#include "../rolesDistribution/Distribution.h"
 
 class Application
 {
@@ -10,11 +10,10 @@ public:
 
 	void runMainGameLoop();
 
-
 private:
 	void init();
 
-	RolesDistrib m_rolesDistrib;
+	Distribution m_distribution;
 	Narrator m_nar;
 	//Game_State state;
 	//Vote vote;

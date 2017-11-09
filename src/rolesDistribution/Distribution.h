@@ -1,18 +1,18 @@
 #pragma once
 #include "../inOut/Narrator.h"
 #include "../player/Player.h"
+#include "AutoCompositionPercent.h"
 
 #include <memory>
 #include <random>
 #include <list>
 #include <vector>
 
-#define WEREWOLF_PERCENT 0.35
 
-class RolesDistrib
+class Distribution
 {
 public:
-	RolesDistrib(Narrator &nar);
+	Distribution(Narrator &nar);
 	void distribPlayers();
 	void distribRoles();
 

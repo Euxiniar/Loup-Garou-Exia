@@ -1,7 +1,7 @@
 #include "Application.h"
 
 Application::Application()
-	: m_rolesDistrib(m_nar)
+	: m_distribution(m_nar)
 {
 	init();
 }
@@ -9,8 +9,8 @@ Application::Application()
 void Application::runMainGameLoop()
 {
 	m_nar.present();
-	m_rolesDistrib.distribPlayers();
-	m_rolesDistrib.distribRoles();
+	m_distribution.distribPlayers();
+	m_distribution.distribRoles();
 }
 
 void Application::init()
