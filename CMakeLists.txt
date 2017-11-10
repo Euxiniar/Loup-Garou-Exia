@@ -49,6 +49,12 @@ file(GLOB_RECURSE SRC_PLAYER
     "src/player/*.hpp"
 )
 
+file(GLOB_RECURSE SRC_TIME
+    "src/time/*.cpp"
+    "src/time/*.h"
+    "src/time/*.hpp"
+)
+
 # Define the executable
 add_executable(${PROJECT_NAME} ${SRC})
 
@@ -56,6 +62,7 @@ source_group("Begin" FILES ${SRC_BEGIN})
 source_group("InOut" FILES ${SRC_INOUT})
 source_group("RolesDistribution" FILES ${SRC_ROLESDISTRIBUTION})
 source_group("Player" FILES ${SRC_PLAYER})
+source_group("Time" FILES ${SRC_TIME})
 
 # Enable C++ 14
 if (NOT UNIX)

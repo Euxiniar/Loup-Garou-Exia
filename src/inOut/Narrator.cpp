@@ -40,6 +40,10 @@ void Narrator::enterPlayer(std::list<Player>& players)
 			players.emplace_back(name);
 		}
 	}
+	if ((name.length() == 1 && std::toupper(name[0], locale) == 'Q'))
+	{
+		exit(EXIT_SUCCESS);
+	}
 }
 
 uint16_t Narrator::selectTypeOfRolesDistrib()
