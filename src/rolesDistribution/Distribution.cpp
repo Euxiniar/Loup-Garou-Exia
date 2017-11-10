@@ -30,6 +30,7 @@ void Distribution::distribRoles()
 		break;
 	}
 	defineRoles(nbPlayersPerRoles);
+	m_nar.distribRolesFinish();
 }
 
 void Distribution::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint16_t> &nbPlayersPerRoles)
@@ -58,6 +59,3 @@ void Distribution::defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles)
 		selectedRole.clear();
 	}
 }
-
-
-

@@ -11,6 +11,17 @@ void Narrator::present()
 	std::cout << "Bienvenue sur le jeu du Loup-Garou" << std::endl << std::endl;
 }
 
+void Narrator::distribRolesFinish()
+{
+	std::cout << "Les roles ont ete distribue !" << std::endl;
+	std::cout << "La partie peut commencer !" << std::endl << std::endl;
+}
+
+void Narrator::showNbPlayers(const size_t &nbPlayers)
+{
+	std::cout << std::endl << "(Vous etes actuellement " << nbPlayers << " Joueurs.)" << std::endl;
+}
+
 void Narrator::enterPlayer(std::list<Player>& players)
 {
 	std::string name;
@@ -21,7 +32,7 @@ void Narrator::enterPlayer(std::list<Player>& players)
 	while ((name.length() != 1 || std::toupper(name[0], locale) != 'V') &&
 		(name.length() != 1 || std::toupper(name[0], locale) != 'Q'))
 	{
-		std::cout << std::endl << "(Vous etes actuellement " << players.size() << " Joueurs.)" << std::endl;
+		showNbPlayers(players.size());
 		std::cin >> name;
 		if ((name.length() != 1 || std::toupper(name[0], locale) != 'V') &&
 			(name.length() != 1 || std::toupper(name[0], locale) != 'Q'))
