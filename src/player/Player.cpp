@@ -5,11 +5,7 @@ Player::Player(std::string name)
 {
 }
 
-Player::Player()
-{
-}
-
-void Player::setRole(Role role)
+void Player::setRole(Role &role)
 {
 	m_role = role;
 }

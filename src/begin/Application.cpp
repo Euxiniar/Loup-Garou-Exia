@@ -15,7 +15,7 @@ void Application::runMainGameLoop()
 
 	while (m_playersTab.size() != 0)
 	{	
-		//m_playersTab.erase(m_playersTab.begin());
+		m_playersTab.erase(m_playersTab.begin());
 	}
 }
 

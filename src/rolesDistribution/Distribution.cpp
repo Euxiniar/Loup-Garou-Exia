@@ -3,9 +3,10 @@
 Distribution::Distribution(Narrator &nar, std::list<Player> &players, std::vector<std::list<Player>> &rolesArray)
 	: m_nar(nar), m_players(players), m_rolesArray(rolesArray)
 {
-	m_roles.emplace_back("Loup-Garou", WEREWOLF_PERCENT);
-	m_roles.emplace_back("Villageois");
-	m_roles.emplace_back("Sorciere");
+	Wereweolf werewolf;
+	Villager villager;
+	m_roles.push_back(werewolf);
+	m_roles.push_back(villager);
 	/***As to change if there's more roles***/
 }
 

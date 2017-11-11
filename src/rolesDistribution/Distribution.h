@@ -1,7 +1,6 @@
 #pragma once
 #include "../inOut/Narrator.h"
 #include "../player/Player.h"
-#include "AutoCompositionPercent.h"
 
 #include <memory>
 #include <random>
