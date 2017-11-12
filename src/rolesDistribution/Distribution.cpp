@@ -15,7 +15,7 @@ void Distribution::distribPlayers(std::list<Player> &players)
 	m_nar.enterPlayer(players);
 }
 
-void Distribution::distribRoles(std::list<Player> &players, std::vector<std::list<Player>> &rolesArray)
+void Distribution::distribRoles(std::list<Player> &players, std::vector<std::list<Player*>> &rolesArray)
 {
 	uint16_t choice = m_nar.selectTypeOfRolesDistrib();
 	std::vector<uint16_t> nbPlayersPerRoles;
@@ -41,7 +41,7 @@ void Distribution::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint1
 	m_nar.showNbPlayersPerRoles(nbPlayersPerRoles, m_roles);
 }
 
-void Distribution::defineRoles(std::list<Player> &players, std::vector<std::list<Player>> &rolesArray, const std::vector<uint16_t> &nbPlayersPerRoles)
+void Distribution::defineRoles(std::list<Player> &players, std::vector<std::list<Player*>> &rolesArray, const std::vector<uint16_t> &nbPlayersPerRoles)
 {
 	std::vector<Player*> shuffledPlayers;
 
@@ -49,17 +49,15 @@ void Distribution::defineRoles(std::list<Player> &players, std::vector<std::list
 	{
 		shuffledPlayers.push_back(&*it);
 	}
-	/*shuffledPlayers.push_back(&players.back());
-	shuffledPlayers.at(0)->setName("Hey");*/
 	std::random_shuffle(shuffledPlayers.begin(), shuffledPlayers.end());
 
-	std::list<Player> selectedRole;
+	std::list<Player*> selectedRole;
 	for (int y = 0; y < nbPlayersPerRoles.size(); y++)
 	{
 		for (int x = 0; x < nbPlayersPerRoles.at(y); x++)
 		{
 			shuffledPlayers.back()->setRole(m_roles.at(y));
-			//selectedRole.push_back(shuffledPlayers.back());
+			selectedRole.push_back(shuffledPlayers.back());
 			shuffledPlayers.pop_back();
 		}
 		rolesArray.push_back(selectedRole);

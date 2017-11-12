@@ -16,7 +16,7 @@ public:
 
 private:
 	void init();
-	std::vector<std::list<Player>> m_rolesArray;
+	std::vector<std::list<Player*>> m_rolesArray;
 	std::list<Player> m_playersTab;
 	std::vector<Time> m_times;
 
