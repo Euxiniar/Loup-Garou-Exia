@@ -3,8 +3,8 @@
 Distribution::Distribution(Narrator &nar, std::list<Player> &players, std::vector<std::list<Player>> &rolesArray)
 	: m_nar(nar), m_players(players), m_rolesArray(rolesArray)
 {
-	Wereweolf werewolf;
-	Villager villager;
+	std::shared_ptr<Werewolf> werewolf(new Werewolf);
+	std::shared_ptr<Villager> villager(new Villager);
 	m_roles.push_back(werewolf);
 	m_roles.push_back(villager);
 	/***As to change if there's more roles***/
@@ -37,8 +37,8 @@ void Distribution::distribRoles()
 void Distribution::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint16_t> &nbPlayersPerRoles)
 {
 	
-	nbPlayersPerRoles.push_back((uint16_t)(nbPlayers*m_roles.at(0).getCompositionPorcent()));
-	nbPlayersPerRoles.push_back((uint16_t)nbPlayers-(uint16_t)(nbPlayers*m_roles.at(0).getCompositionPorcent()));
+	nbPlayersPerRoles.push_back((uint16_t)(nbPlayers*m_roles.at(0)->getCompositionPorcent()));
+	nbPlayersPerRoles.push_back((uint16_t)nbPlayers-(uint16_t)(nbPlayers*m_roles.at(0)->getCompositionPorcent()));
 	m_nar.showNbPlayersPerRoles(nbPlayersPerRoles, m_roles);
 }
 

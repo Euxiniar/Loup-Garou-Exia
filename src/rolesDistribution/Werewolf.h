@@ -1,10 +1,10 @@
 #pragma once
 #include "Role.h"
 
-class Wereweolf : public Role
+class Werewolf : public Role
 {
 	public:
-	Wereweolf();
+	Werewolf();
 
 	void specialAction() override;
 };

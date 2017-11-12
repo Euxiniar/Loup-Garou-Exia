@@ -5,7 +5,7 @@ Player::Player(std::string name)
 {
 }
 
-void Player::setRole(Role &role)
+void Player::setRole(std::shared_ptr<Role> role)
 {
 	m_role = role;
 }

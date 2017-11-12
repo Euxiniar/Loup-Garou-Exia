@@ -1,11 +1,11 @@
 #include "Werewolf.h"
 
-Wereweolf::Wereweolf()
+Werewolf::Werewolf()
 {
 	m_name = "Loup-Garou";
 	m_autoCompositionPercent = WEREWOLF_PERCENT;
 }
 
-void Wereweolf::specialAction()
+void Werewolf::specialAction()
 {
 }

@@ -11,9 +11,9 @@ class Player
 {
 public:
 	Player(std::string name);
-	void setRole(Role &roleName);
+	void setRole(std::shared_ptr<Role> role);
 private:
 	bool state; //state 1 == alive and 
 	std::string m_name;
-	Role m_role;
+	std::shared_ptr<Role> m_role;
 };

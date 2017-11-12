@@ -15,7 +15,7 @@ public:
 	void distribRolesFinish();
 	void enterPlayer(std::list<Player> &players);
 	uint16_t selectTypeOfRolesDistrib();
-	void defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, std::vector<Role>& roles);
-	void showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, std::vector<Role>& roles);
+	void defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::shared_ptr<Role>>& roles);
+	void showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::shared_ptr<Role>>& roles);
 	void showNbPlayers(const size_t &nbPlayers);
 };
