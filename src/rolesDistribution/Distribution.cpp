@@ -43,7 +43,14 @@ void Distribution::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint1
 
 void Distribution::defineRoles(std::list<Player> &players, std::vector<std::list<Player>> &rolesArray, const std::vector<uint16_t> &nbPlayersPerRoles)
 {
-	std::vector<Player> shuffledPlayers(players.begin(),players.end());
+	std::vector<Player*> shuffledPlayers;
+
+	for (std::list<Player>::iterator it = players.begin(); it != players.end(); it++)
+	{
+		shuffledPlayers.push_back(&*it);
+	}
+	/*shuffledPlayers.push_back(&players.back());
+	shuffledPlayers.at(0)->setName("Hey");*/
 	std::random_shuffle(shuffledPlayers.begin(), shuffledPlayers.end());
 
 	std::list<Player> selectedRole;
@@ -51,8 +58,8 @@ void Distribution::defineRoles(std::list<Player> &players, std::vector<std::list
 	{
 		for (int x = 0; x < nbPlayersPerRoles.at(y); x++)
 		{
-			shuffledPlayers.back().setRole(m_roles.at(y));
-			selectedRole.push_back(shuffledPlayers.back());
+			shuffledPlayers.back()->setRole(m_roles.at(y));
+			//selectedRole.push_back(shuffledPlayers.back());
 			shuffledPlayers.pop_back();
 		}
 		rolesArray.push_back(selectedRole);
