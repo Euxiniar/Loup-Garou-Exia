@@ -11,16 +11,18 @@
 class Distribution
 {
 public:
-	Distribution(Narrator &nar, std::list<Player> &players, std::vector<std::list<Player>> &rolesArray);
-	void distribPlayers();
-	void distribRoles();
+	Distribution(Narrator &nar);
+	void distribPlayers(std::list<Player> &players);
+	void distribRoles(std::list<Player> &players, std::vector<std::list<Player>> &rolesArray);
 
 private:
 	Narrator& m_nar;
-	std::list<Player> &m_players;
-	std::vector<std::list<Player>> &m_rolesArray;
 	std::vector<std::shared_ptr<Role>> m_roles;
 
-	void autoDefineRolesNb(const size_t &nbPlayers, std::vector<uint16_t> &nbPlayersPerRoles);
-	void defineRoles(const std::vector<uint16_t> &nbPlayersPerRoles);
+	void autoDefineRolesNb(const size_t &nbPlayers, 
+		std::vector<uint16_t> &nbPlayersPerRoles);
+
+	void defineRoles(std::list<Player> &players, 
+		std::vector<std::list<Player>> &rolesArray, 
+		const std::vector<uint16_t> &nbPlayersPerRoles);
 };

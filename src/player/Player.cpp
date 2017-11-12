@@ -9,3 +9,8 @@ void Player::setRole(std::shared_ptr<Role> role)
 {
 	m_role = role;
 }
+
+void Player::setName(std::string name)
+{
+	m_name = name;
+}

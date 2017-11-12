@@ -1,7 +1,7 @@
 #include "Application.h"
 
 Application::Application()
-	: m_distribution(m_nar, m_playersTab, m_rolesArray)
+	: m_distribution(m_nar)
 {
 	init();
 }
@@ -9,8 +9,8 @@ Application::Application()
 void Application::runMainGameLoop()
 {
 	m_nar.present();
-	m_distribution.distribPlayers();
-	m_distribution.distribRoles();
+	m_distribution.distribPlayers(m_playersTab);
+	m_distribution.distribRoles(m_playersTab, m_rolesArray);
 	uint16_t timeZone{ NIGHT };
 
 	while (m_playersTab.size() != 0)
