@@ -1,4 +1,4 @@
-# Loup-Garou Exia.Cesi
+# Loup-Garou Exia.Cesi Orléans
 Création d'un jeu du loup-garou en année A1 à Exia Cesi
 
 ## Prerequis
