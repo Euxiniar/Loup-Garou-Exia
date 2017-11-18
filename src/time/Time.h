@@ -1,10 +1,15 @@
 #pragma once
 #include "../inOut/Narrator.h"
-#include <list>
+#include <vector>
+#include "../player/Player.h"
+#include <memory>
 
 class Time
 {
 public:
-	Time();
-	virtual void launchTime() = 0;
+	Time(Narrator& nar);
+	virtual void launchTime(std::vector<Player>& players, std::vector<std::vector<Player*>>& rolesArray) = 0;
+
+protected:
+	Narrator& m_nar;
 };

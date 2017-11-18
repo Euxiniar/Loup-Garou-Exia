@@ -1,9 +1,6 @@
 #include "Time.h"
 
-Time::Time()
-{
-}
-
-void Time::launchTime()
+Time::Time(Narrator & nar)
+	: m_nar(nar)
 {
 }

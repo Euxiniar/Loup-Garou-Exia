@@ -22,6 +22,11 @@ void Narrator::showNbPlayers(const size_t &nbPlayers)
 	std::cout << std::endl << "(Vous etes actuellement " << nbPlayers << " Joueurs.)" << std::endl;
 }
 
+void Narrator::wakeUp(const std::string & typeThatWakeUp)
+{
+	std::cout << "Les " << typeThatWakeUp << " se reveillent !" << std::endl;
+}
+
 void Narrator::enterPlayer(std::vector<Player>& players)
 {
 	std::string name;
