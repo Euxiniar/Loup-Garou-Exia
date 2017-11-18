@@ -5,6 +5,6 @@
 class Day : public Time
 {
 public:
-	Day(std::list<Player> &players);
+	Day();
 	void launchTime();
 };

@@ -5,10 +5,6 @@
 class Time
 {
 public:
-	Time(std::list<Player> &players);
-	virtual void launchTime();
-
-protected:
-	std::list<Player> &m_players;
-	
+	Time();
+	virtual void launchTime() = 0;
 };

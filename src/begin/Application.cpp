@@ -21,6 +21,6 @@ void Application::runMainGameLoop()
 
 void Application::init()
 {
-	Day day(m_playersTab);
-	m_times.push_back(day);
+	std::unique_ptr<Day> day(new Day);
+	m_times.push_back(std::move(day));
 }  
