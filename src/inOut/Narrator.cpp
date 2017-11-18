@@ -22,7 +22,7 @@ void Narrator::showNbPlayers(const size_t &nbPlayers)
 	std::cout << std::endl << "(Vous etes actuellement " << nbPlayers << " Joueurs.)" << std::endl;
 }
 
-void Narrator::enterPlayer(std::list<Player>& players)
+void Narrator::enterPlayer(std::vector<Player>& players)
 {
 	std::string name;
 	std::locale locale;

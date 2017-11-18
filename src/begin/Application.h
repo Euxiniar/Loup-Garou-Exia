@@ -16,8 +16,8 @@ public:
 
 private:
 	void init();
-	std::vector<std::list<Player*>> m_rolesArray;
-	std::list<Player> m_playersTab;
+	std::vector<std::vector<Player*>> m_rolesArray;
+	std::vector<Player> m_playersTab;
 	std::vector<std::unique_ptr<Time>> m_times;
 
 	Distribution m_distribution;

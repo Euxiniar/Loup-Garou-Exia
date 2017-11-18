@@ -10,12 +10,12 @@ Distribution::Distribution(Narrator &nar)
 	/***As to change if there's more roles***/
 }
 
-void Distribution::distribPlayers(std::list<Player> &players)
+void Distribution::distribPlayers(std::vector<Player>& players)
 {
 	m_nar.enterPlayer(players);
 }
 
-void Distribution::distribRoles(std::list<Player> &players, std::vector<std::list<Player*>> &rolesArray)
+void Distribution::distribRoles(std::vector<Player>& players, std::vector<std::vector<Player*>>& rolesArray)
 {
 	uint16_t choice = m_nar.selectTypeOfRolesDistrib();
 	std::vector<uint16_t> nbPlayersPerRoles;
@@ -41,17 +41,17 @@ void Distribution::autoDefineRolesNb(const size_t & nbPlayers, std::vector<uint1
 	m_nar.showNbPlayersPerRoles(nbPlayersPerRoles, m_roles);
 }
 
-void Distribution::defineRoles(std::list<Player> &players, std::vector<std::list<Player*>> &rolesArray, const std::vector<uint16_t> &nbPlayersPerRoles)
+void Distribution::defineRoles(std::vector<Player>& players, std::vector<std::vector<Player*>>& rolesArray, const std::vector<uint16_t> &nbPlayersPerRoles)
 {
 	std::vector<Player*> shuffledPlayers;
 
-	for (std::list<Player>::iterator it = players.begin(); it != players.end(); it++)
+	for (std::vector<Player>::iterator it = players.begin(); it != players.end(); it++)
 	{
 		shuffledPlayers.push_back(&*it);
 	}
 	std::random_shuffle(shuffledPlayers.begin(), shuffledPlayers.end());
 
-	std::list<Player*> selectedRole;
+	std::vector<Player*> selectedRole;
 	for (int y = 0; y < nbPlayersPerRoles.size(); y++)
 	{
 		for (int x = 0; x < nbPlayersPerRoles.at(y); x++)
