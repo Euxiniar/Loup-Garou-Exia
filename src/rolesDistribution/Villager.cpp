@@ -1,8 +1,8 @@
 #include "Villager.h"
 
 Villager::Villager()
+	: Role(VILLAGER, "Villageois")
 {
-	m_name = "Villageois";
 	m_autoCompositionPercent = VILLAGER_PERCENT;
 }
 

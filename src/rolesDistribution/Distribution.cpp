@@ -3,10 +3,10 @@
 Distribution::Distribution(Narrator &nar)
 	: m_nar(nar)
 {
-	std::shared_ptr<Werewolf> werewolf(new Werewolf);
-	std::shared_ptr<Villager> villager(new Villager);
-	m_roles.push_back(werewolf);
-	m_roles.push_back(villager);
+	std::unique_ptr<Werewolf> werewolf(new Werewolf);
+	std::unique_ptr<Villager> villager(new Villager);
+	m_roles.push_back(std::move(werewolf));
+	m_roles.push_back(std::move(villager));
 	/***As to change if there's more roles***/
 }
 
@@ -56,7 +56,7 @@ void Distribution::defineRoles(std::vector<Player>& players, std::vector<std::ve
 	{
 		for (int x = 0; x < nbPlayersPerRoles.at(y); x++)
 		{
-			shuffledPlayers.back()->setRole(m_roles.at(y));
+			shuffledPlayers.back()->changeRole(m_roles.at(y)->getId());
 			selectedRole.push_back(shuffledPlayers.back());
 			shuffledPlayers.pop_back();
 		}

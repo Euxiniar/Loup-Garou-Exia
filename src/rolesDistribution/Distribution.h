@@ -17,7 +17,7 @@ public:
 
 private:
 	Narrator& m_nar;
-	std::vector<std::shared_ptr<Role>> m_roles;
+	std::vector<std::unique_ptr<Role>> m_roles;
 
 	void autoDefineRolesNb(const size_t &nbPlayers, 
 		std::vector<uint16_t> &nbPlayersPerRoles);

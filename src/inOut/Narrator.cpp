@@ -60,7 +60,7 @@ uint16_t Narrator::selectTypeOfRolesDistrib()
 	return choice;
 }
 
-void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::shared_ptr<Role>>& roles)
+void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::unique_ptr<Role>>& roles)
 {
 	uint16_t choice{ 0 };
 	uint16_t nbPlayersRoles{ 0 };
@@ -107,7 +107,7 @@ void Narrator::defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nb
 	showNbPlayersPerRoles(nbPlayersPerRoles, roles);
 }
 
-void Narrator::showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::shared_ptr<Role>>& roles)
+void Narrator::showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::unique_ptr<Role>>& roles)
 {
 	for (size_t i = 0; i < nbPlayersPerRoles.size(); i++)
 	{

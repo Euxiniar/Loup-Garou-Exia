@@ -1,19 +1,19 @@
 #pragma once
 #include <string>
-#include "AutoCompositionPercent.h"
+#include "RolesDefinition.h"
 
 class Role
 {
 public:
-	Role();
+	Role(uint16_t id, std::string name);
 
-	void setName(std::string name);
-	virtual void setCompositionPorcent(double compositionPorcent);
 	virtual double getCompositionPorcent();
 	virtual const std::string getName();
+	virtual const std::uint16_t getId();
 	virtual void specialAction() = 0;
 
 protected:
 	std::string m_name;
 	double m_autoCompositionPercent;
+	uint16_t m_id;
 };

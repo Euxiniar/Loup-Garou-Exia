@@ -5,14 +5,17 @@ Player::Player(std::string name)
 {
 }
 
-void Player::setRole(std::shared_ptr<Role> role)
+void Player::changeRole(uint16_t roleId)
 {
-	m_role = role;
-}
-
-void Player::setName(std::string name)
-{
-	m_name = name;
+	switch (roleId)
+	{
+	case WEREWOLF:
+		m_role.reset(new Werewolf());
+		break;
+	case VILLAGER:
+		m_role.reset(new Villager());
+		break;
+	}
 }
 
 std::string Player::getName()

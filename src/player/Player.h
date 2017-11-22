@@ -11,11 +11,10 @@ class Player
 {
 public:
 	Player(std::string name);
-	void setRole(std::shared_ptr<Role> role);
-	void setName(std::string name);
+	void changeRole(uint16_t roleId);
 	std::string getName();
 private:
 	bool state; //state 1 == alive and 
 	std::string m_name;
-	std::shared_ptr<Role> m_role;
+	std::unique_ptr<Role> m_role;
 };

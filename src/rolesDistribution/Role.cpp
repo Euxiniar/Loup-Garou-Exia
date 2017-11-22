@@ -1,17 +1,8 @@
 #include "Role.h"
 
-Role::Role()
+Role::Role(uint16_t id, std::string name)
+	: m_id(id), m_name(name)
 {
-}
-
-void Role::setName(std::string name)
-{
-	m_name = name;
-}
-
-void Role::setCompositionPorcent(double compositionPorcent)
-{
-	m_autoCompositionPercent = compositionPorcent;
 }
 
 double Role::getCompositionPorcent()
@@ -22,6 +13,11 @@ double Role::getCompositionPorcent()
 const std::string Role::getName()
 {
 	return m_name;
+}
+
+const std::uint16_t Role::getId()
+{
+	return m_id;
 }
 
 void Role::specialAction()
