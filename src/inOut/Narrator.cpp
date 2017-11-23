@@ -24,6 +24,14 @@ void Narrator::showNbPlayers(const size_t &nbPlayers)
 
 void Narrator::sayRolesTurn(std::vector<std::vector<Player*>>& rolesArray)
 {
+	std::map<int, Player*> participatingPlayers;
+	std::map<int, Player*> potentialsDyingPlayers;
+
+	int participatingPlayersId{ 0 };
+	int potentialsDyingPlayersId{ 0 };
+	int participatingPlayersSelected{ 0 };
+	int potentialsDyingPlayersSelected{ 0 };
+
 	for (size_t i = 0; i < rolesArray.size(); i++)
 	{
 		if (!rolesArray.at(i).empty())
@@ -31,6 +39,46 @@ void Narrator::sayRolesTurn(std::vector<std::vector<Player*>>& rolesArray)
 			if (rolesArray.at(i).at(0)->getRole()->getActivityPeriod() == NIGHT_ACTIVITY)
 			{
 				std::cout << "Le(s) " << rolesArray.at(i).at(0)->getRole()->getName() << "(s) se reveillent !" << std::endl;
+				for (size_t y = 0; y < rolesArray.at(i).size(); y++)
+				{
+					if (rolesArray.at(i).at(y)->isAlive())
+					{
+						participatingPlayers.emplace(participatingPlayersId, rolesArray.at(i).at(y));
+						participatingPlayersId++;
+					}
+				}
+				std::cout << "Pour voter pour quelqu'un, tapez votre numero, suivi de celui de votre cible :" << std::endl;
+				for (int y = 0; y < participatingPlayers.size(); y++)
+				{
+					std::cout << participatingPlayers.at(y)->getName() << " ( " << y << " )" << std::endl;
+				}
+				std::cout << std::endl;
+				for (size_t z = 0; z < rolesArray.size(); z++)
+				{
+					if (!rolesArray.at(z).empty())
+					{
+						if (rolesArray.at(z).at(0)->getRole()->getActivityPeriod() != NIGHT_ACTIVITY)
+						{
+							for (size_t a = 0; a < rolesArray.at(z).size(); a++)
+							{
+								if (rolesArray.at(z).at(a)->isAlive())
+								{
+									potentialsDyingPlayers.emplace(potentialsDyingPlayersId, rolesArray.at(z).at(a));
+									potentialsDyingPlayersId++;
+								}
+							}
+						}
+					}
+				}
+				for (int y = 0; y < potentialsDyingPlayers.size(); y++)
+				{
+					std::cout << potentialsDyingPlayers.at(y)->getName() << " ( " << y << " )" << std::endl;
+				}
+				std::cin >> participatingPlayersSelected;
+				std::cin >> potentialsDyingPlayersSelected;
+				potentialsDyingPlayers.at(participatingPlayers.at(participatingPlayersSelected)->getVoteAgainst())->remVote();
+				participatingPlayers.at(participatingPlayersSelected)->changeVoteAgainst(potentialsDyingPlayersSelected);
+				potentialsDyingPlayers.at(potentialsDyingPlayersSelected)->addVote();
 			}
 		}
 	}

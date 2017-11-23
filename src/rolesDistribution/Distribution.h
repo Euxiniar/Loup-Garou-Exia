@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <random>
+#include <algorithm>
 #include <list>
 #include <vector>
 

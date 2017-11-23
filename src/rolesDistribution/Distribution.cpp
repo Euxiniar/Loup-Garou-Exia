@@ -49,7 +49,10 @@ void Distribution::defineRoles(std::vector<Player>& players, std::vector<std::ve
 	{
 		shuffledPlayers.push_back(&*it);
 	}
-	std::random_shuffle(shuffledPlayers.begin(), shuffledPlayers.end());
+
+	std::random_device rd;
+	std::mt19937 g(rd());
+	std::shuffle(std::begin(shuffledPlayers), std::end(shuffledPlayers), g);
 
 	std::vector<Player*> selectedRole;
 	for (int y = 0; y < nbPlayersPerRoles.size(); y++)

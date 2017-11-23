@@ -8,5 +8,10 @@ Day::Day(Narrator& nar)
 void Day::launchTime(std::vector<Player>& players, std::vector<std::vector<Player*>>& rolesArray)
 {
 	m_nar.sayRolesTurn(rolesArray);
-	//players.changeState(DEAD);
+	int i = 0;
+	while (!players.at(i).isAlive())
+	{
+		i++;
+	}
+	players.at(i).changeState(DEAD);
 }
