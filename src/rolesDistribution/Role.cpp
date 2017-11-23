@@ -1,7 +1,7 @@
 #include "Role.h"
 
-Role::Role(uint16_t id, std::string name)
-	: m_id(id), m_name(name)
+Role::Role(uint16_t id, uint16_t activityPeriod, std::string name)
+	: m_id(id), m_name(name), m_activityPeriod(activityPeriod)
 {
 }
 
@@ -18,6 +18,11 @@ const std::string Role::getName()
 const std::uint16_t Role::getId()
 {
 	return m_id;
+}
+
+const std::uint16_t Role::getActivityPeriod()
+{
+	return m_activityPeriod;
 }
 
 void Role::specialAction()

@@ -1,7 +1,7 @@
 #include "Werewolf.h"
 
 Werewolf::Werewolf()
-	: Role(WEREWOLF, "Loup-Garou")
+	: Role(WEREWOLF, NIGHT_ACTIVITY, "Loup-Garou")
 {
 	m_autoCompositionPercent = WEREWOLF_PERCENT;
 }

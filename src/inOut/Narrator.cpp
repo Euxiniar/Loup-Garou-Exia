@@ -22,9 +22,18 @@ void Narrator::showNbPlayers(const size_t &nbPlayers)
 	std::cout << std::endl << "(Vous etes actuellement " << nbPlayers << " Joueurs.)" << std::endl;
 }
 
-void Narrator::wakeUp(const std::string & typeThatWakeUp)
+void Narrator::sayRolesTurn(std::vector<std::vector<Player*>>& rolesArray)
 {
-	std::cout << "Les " << typeThatWakeUp << " se reveillent !" << std::endl;
+	for (size_t i = 0; i < rolesArray.size(); i++)
+	{
+		if (!rolesArray.at(i).empty())
+		{
+			if (rolesArray.at(i).at(0)->getRole()->getActivityPeriod() == NIGHT_ACTIVITY)
+			{
+				std::cout << "Le(s) " << rolesArray.at(i).at(0)->getRole()->getName() << "(s) se reveillent !" << std::endl;
+			}
+		}
+	}
 }
 
 void Narrator::enterPlayer(std::vector<Player>& players)

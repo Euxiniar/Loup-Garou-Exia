@@ -19,7 +19,7 @@ private:
 	std::vector<std::vector<Player*>> m_rolesArray;
 	std::vector<Player> m_playersTab;
 	std::vector<std::unique_ptr<Time>> m_times;
-
+	uint8_t howManyPlayersAlive();
 	Distribution m_distribution;
 	Narrator m_nar;
 	

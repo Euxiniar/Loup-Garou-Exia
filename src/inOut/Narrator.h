@@ -18,5 +18,5 @@ public:
 	void defineRolesNb(const size_t & nbPlayers, std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::unique_ptr<Role>>& roles);
 	void showNbPlayersPerRoles(const std::vector<uint16_t>& nbPlayersPerRoles, std::vector<std::unique_ptr<Role>>& roles);
 	void showNbPlayers(const size_t &nbPlayers);
-	void wakeUp(const std::string &typeThatWakeUp);
+	void sayRolesTurn(std::vector<std::vector<Player*>>& rolesArray);
 };
