@@ -57,7 +57,7 @@ void Narrator::sayRolesTurn(std::vector<std::vector<Player*>>& rolesArray)
 				{
 					if (!rolesArray.at(z).empty())
 					{
-						if (rolesArray.at(z).at(0)->getRole()->getActivityPeriod() != NIGHT_ACTIVITY)
+						if (rolesArray.at(z).at(0)->getRole()->getId() != rolesArray.at(i).at(0)->getRole()->getId())
 						{
 							for (size_t a = 0; a < rolesArray.at(z).size(); a++)
 							{
@@ -76,7 +76,10 @@ void Narrator::sayRolesTurn(std::vector<std::vector<Player*>>& rolesArray)
 				}
 				std::cin >> participatingPlayersSelected;
 				std::cin >> potentialsDyingPlayersSelected;
-				potentialsDyingPlayers.at(participatingPlayers.at(participatingPlayersSelected)->getVoteAgainst())->remVote();
+				if (participatingPlayers.at(participatingPlayersSelected)->getVoteAgainst() != -1)
+				{
+					potentialsDyingPlayers.at(participatingPlayers.at(participatingPlayersSelected)->getVoteAgainst())->remVote();
+				}
 				participatingPlayers.at(participatingPlayersSelected)->changeVoteAgainst(potentialsDyingPlayersSelected);
 				potentialsDyingPlayers.at(potentialsDyingPlayersSelected)->addVote();
 			}

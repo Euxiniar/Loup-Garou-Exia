@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player::Player(std::string name) 
-	: m_name(name), m_state(ALIVE), m_vote(0), m_voteAgainst(0)
+	: m_name(name), m_state(ALIVE), m_vote(0), m_voteAgainst(-1)
 {
 }
 
